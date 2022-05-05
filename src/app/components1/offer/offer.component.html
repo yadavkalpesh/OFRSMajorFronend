@@ -1,0 +1,37 @@
+<div class="container">
+    <p class="text-center title" style="margin-top: 100px;">Offers</p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <button (click)="addOffer()" class="btn btn-success mx-4 my-2 mb-3">Add Offer</button>
+            <button (click)="exportToExcel()" class="btn btn-success my-2 mb-3"><img src="/assets/icons/excel.png" height="25px" width="25px"></button>
+            <button printSectionId="OfferList" (click)="convetToPDF()" 
+                 class="btn btn-success mx-2 my-2 mb-3">
+                <img src="/assets/icons/pdf.png" height="25px" width="25px">
+            </button>
+        </div>
+        <div class="col-md-3 offset-md-5 px-5 ">
+            <input class="form-control search" type="text" [(ngModel)]="searchOffer" placeholder="Offer Name">
+        </div>
+        
+    </div>
+
+    <div class="row mx-2 my-3" id="OfferList">
+        <div  class="d-flex card text-center col-md-3 col-3 mx-4 mb-4 " *ngFor="let offer of offer | searchByOfferCode:searchOffer">
+            <div class="image"><img src="https://i.imgur.com/DC94rZe.png" width="100"></div>
+            <div class="image2"><img src="https://i.imgur.com/DC94rZe.png" width="100"></div>
+            <h1 class="mb-2 pt-3">{{offer.offerName}}</h1><span class="d-block mt-2">On Everything</span>
+            <div class="mt-4"><small><img src="/assets/icons/discount.png">code: {{offer.offerCode}}</small></div>
+            <div class="row mt-1">
+                <div class="col">
+                    <button (click)="updateOffer(offer.offerId)" class="btn btn-warning p-3"><img src="/assets/icons/edit.png" height="35px" width="35px"></button>
+                </div>
+                <div class="col">
+                    <button (click)="deletecur(offer.offerId)" class="btn btn-danger p-3"><img src="/assets/icons/delete.png" height="35px" width="35px"></button>
+                </div>
+            </div>
+           
+            
+        </div>
+    </div>
+</div>

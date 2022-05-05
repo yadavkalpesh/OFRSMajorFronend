@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Ticket</title>
+</head>
+
+<body>
+    <div class="container" style="width: 45rem;">
+        <div class="card text-center" style="height: 320px;">
+            <div class="card-header" style="font-size: 135%;">
+                <img src="/assets/img/flight11.png" width="35px" height="35px"/>
+                <b>{{flight.flightName}}</b>
+            </div>
+            <div class="card-body" style="height: 100px;">
+                <div class="grid-container">
+                    <div class="grid-item item1">
+                        <span style="margin-right: 10px; font-size: 80%;"><b><u>Boarding Pass</u></b></span><br>
+                        <span class="mx-2" style="font-size: 65%;">{{flight.source}}</span><img src="/assets/img/displace2.png" alt="" width="60px" height="60px" ><span class="mx-2" style="font-size: 65%;">{{flight.destination}}</span><br>
+                        <span style="font-size: 65%;"><u>Boarding Schedule</u></span><br>
+                        <span class="mx-2" style="font-size: 65%;">{{flight.departureDate}}</span><span class="mx-2" style="font-size: 65%;">{{flight.departureTime}}</span>
+                    </div>
+                    <div class="grid-item item2"><img src="/assets/img/barcode1.png" alt="" width="150px" height="150px" ><br>
+                        <span class="mx-2" style="font-size: 65%;"><b><u>{{user.userName}}</u></b></span><br/>
+                    </div>
+                </div>
+                  
+                
+            </div>
+            <div class="card-footer text-muted">
+                <b>Happy Journey !!!!!</b>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

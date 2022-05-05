@@ -1,0 +1,43 @@
+button{
+    border-radius: 20px;
+     background-color:#007bff;
+     color: #fff;
+    border: transparent;
+}
+
+.search{
+  border-radius: 20px;
+}
+.search::placeholder{
+  padding-left: 7px;
+}
+
+table {
+    width: 100%;
+}
+
+thead{
+  font-size: 16px;
+}
+tbody{
+  font-size: 15px;
+  font-weight:500;
+}
+ 
+.panel{
+    background: linear-gradient(to right, #f2f2f2, #80bfff);
+    padding: 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.05),0 0 0 10px rgba(0,0,0,0.05);
+}
+
+.title{
+  font-size: 30px;
+  padding-top: 25px;
+  padding-left: 20px;
+  font-weight: 500;
+ color: #007bff; 
+}
+
+

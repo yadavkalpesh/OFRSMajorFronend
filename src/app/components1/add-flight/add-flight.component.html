@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+    <title>Add Flight</title>
+</head>
+
+<body>
+
+    <div class="form-body" style="margin-top: 100px;">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3 class="title" style="color: #007bff;">Add Flight</h3>
+
+                        <form [formGroup]="flight" (ngSubmit)="onSubmit()">
+
+                            <div class="col-md-12 my-4 mb-2">
+                                <label for="flightName" class="form-label">Flight Name</label>
+                                <select class="form-select" formControlName="flightName" name="flightName"
+                                    style="margin:0px;">
+                                    <option selected disabled value="">Flight Name</option>
+                                    <option value="IndiGo">IndiGo</option>
+                                    <option value="Air India">Air India</option>
+                                    <option value="SpiceJet">SpiceJet</option>
+                                    <option value="Go First">Go First</option>
+                                    <option value="AirAsia ">AirAsia</option>
+                                    <option value="Vistara">Vistara</option>
+                                    <option value="TruJet">TruJet</option>
+                                </select>
+                                <div *ngIf="flightName.invalid && (flightName.dirty || flightName.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="flightName.errors.required">
+                                        Flight Name required!!
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <label for="source" class="form-label mb-0">Source</label>
+                                <select class="form-select" formControlName="source" name="source" placeholder="Source"
+                                    required>
+                                    <option selected disabled value="">Source</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Bengaluru">Bengaluru</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Kochi">Kochi</option>
+                                </select>
+                                <div *ngIf="source.invalid && (source.dirty || source.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="source.errors.required">
+                                        Source required!!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 my-2">
+                                <label for="destination" class="form-label">Destination</label>
+                                <select class="form-select" formControlName="destination" name="destination"
+                                  [class.is-invalid]="flight.errors?.invalidMatch" (click)="check()"  style="margin:0px;" required>
+                                    <option selected disabled value="">Destination</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Bengaluru">Bengaluru</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Kochi">Kochi</option>
+                                </select>
+                                <div *ngIf="flagValid" style="height: 55px;width:450px;background-color:#ffcccc;">
+                                    <small style="font-size: 17px; padding-left: 10px;" class="text-danger mt-2">{{valid}}</small>
+                                </div>
+                                
+                                <!-- <small class="text-danger" *ngIf="flight.errors?.invalidMatch"> Destination Not Allowed!!!</small> -->
+                                <div *ngIf="destination.invalid && (destination.dirty || destination.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="destination.errors.required">
+                                        Destination required!!
+                                    </div>
+                                    <div *ngIf="flight.errors?.invalidMatch">
+                                        Destination Not Allowed!!
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col-md-12 my-3">
+                                <label for="departureDate" class="form-label">Departure Date</label>
+                                <input class="form-control" type="date" formControlName="departureDate"
+                                  min="{{currentDate| date:'yyyy-MM-dd'}}"  name="departureDate" required>
+                                <div *ngIf="departureDate.invalid && (departureDate.dirty || departureDate.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="departureDate.errors.required">
+                                        Departure Date required!!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="departureTime" class="form-label">Departure Time</label>
+                                <input class="form-control" type="time" formControlName="departureTime"
+                                name="departureTime" required>
+                                <div *ngIf="departureTime.invalid && (departureTime.dirty || departureTime.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="departureTime.errors.required">
+                                        Departure Time required!!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 my-3 ">
+                                <label for="stops" class="form-label">Flight Stops</label>
+                                <select class="form-select mt-0" formControlName="stops" name="stops" required>
+                                    <option selected disabled value="">Flight Stops</option>
+                                    <option value="Non-Stop">Non-Stop</option>
+                                    <option value="1 Stop">1 Stop</option>
+                                    <option value="2 Stop">2 Stop</option>
+                                </select>
+                                <div *ngIf="stops.invalid && (stops.dirty || stops.touched)" class="alert alert-danger">
+                                    <div *ngIf="stops.errors.required">
+                                        Stops required!!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 my-3">
+                                <label for="totalSeats" class="form-label">Total Seats</label>
+                                <input class="form-control" type="number" formControlName="totalSeats" name="totalSeats"
+                                    placeholder="Total Seats" required>
+                                <div *ngIf="totalSeats.invalid && (totalSeats.dirty || totalSeats.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="totalSeats.errors.required">
+                                        Total Seats required!!
+                                    </div>
+                                    <div *ngIf="totalSeats.errors.min">
+                                        Total Seats capacity should be greater than 0
+                                    </div>
+                                    <div *ngIf="totalSeats.errors.max">
+                                        Total Seats capacity should be less than 850
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 my-3">
+                                <label for="basePrice" class="form-label">Base Price</label>
+                                <input class="form-control" type="number" formControlName="basePrice" name="basePrice"
+                                    placeholder="Base Price" required>
+                                <div *ngIf="basePrice.invalid && (basePrice.dirty || basePrice.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="basePrice.errors.required">
+                                        Base Price required!!
+                                    </div>
+                                    <div *ngIf="basePrice.errors.min">
+                                        Base Price should be greater than 500
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-button mt-3">
+                                <button mat-stroked-button id="submit" type="submit" [disabled]="!flight.valid"
+                                    class="btn btn-success">Add Flight</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

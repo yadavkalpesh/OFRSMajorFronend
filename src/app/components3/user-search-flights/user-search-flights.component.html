@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<!-- <app-navbar></app-navbar> -->
+
+<body>
+
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<form [formGroup]="flights" (ngSubmit)="onSubmit()">
+							<!-- <div class="form-group">
+								<div class="form-checkbox">
+									<label for="roundtrip">
+										<input type="radio" id="roundtrip" name="flight-type">
+										<span></span>Roundtrip
+									</label>
+									<label for="one-way">
+										<input type="radio" id="one-way" name="flight-type">
+										<span></span>One way
+									</label>
+									<label for="multi-city">
+										<input type="radio" id="multi-city" name="flight-type">
+										<span></span>Multi-City
+									</label>
+								</div>
+							</div> -->
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<span class="form-label">Flying from</span>
+										<!-- <input class="form-control" type="text" placeholder="City or airport"> -->
+										<select class="form-control" name="source" formControlName="source">
+											<option selected disabled value="">Source</option>
+											<option value="Pune">Pune</option>
+											<option value="Mumbai">Mumbai</option>
+											<option value="Delhi">Delhi</option>
+											<option value="Chennai">Chennai</option>
+											<option value="Bengaluru">Bengaluru</option>
+											<option value="Kolkata">Kolkata</option>
+											<option value="Hyderabad">Hyderabad</option>
+											<option value="Kochi">Kochi</option>
+										</select>
+										<span class="select-arrow"></span>
+
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<span class="form-label">Flyning to</span>
+										<!-- <input class="form-control" type="text" placeholder="City or airport"> -->
+										<select class="form-control" name="destination" (click)="check()"
+											formControlName="destination">
+											<option selected disabled value="">Destination</option>
+											<option value="Pune">Pune</option>
+											<option value="Mumbai">Mumbai</option>
+											<option value="Delhi">Delhi</option>
+											<option value="Chennai">Chennai</option>
+											<option value="Bengaluru">Bengaluru</option>
+											<option value="Kolkata">Kolkata</option>
+											<option value="Hyderabad">Hyderabad</option>
+											<option value="Kochi">Kochi</option>
+										</select>
+										<span class="select-arrow"></span>
+										<div *ngIf="flagValid"
+											style="height: 55px;width:350px;background-color:#ffcccc;">
+											<small style="font-size: 17px; padding-left: 10px;"
+												class="text-danger mt-2">{{valid}}</small>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<span class="form-label">Departing</span>
+										<input min="{{currentDate| date:'yyyy-MM-dd'}}" class="form-control" type="date"
+											name="departureDate" formControlName="departureDate" required>
+									</div>
+								</div>
+								<!-- <div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Returning</span>
+										<input class="form-control" type="date" required>
+									</div>
+								</div> -->
+								<div class="row  d-flex align-items-center justify-content-center">
+									<div class="col-md-3">
+										<div class="form-group">
+											<span class="form-label">Flight Stops</span>
+											<!-- <input class="form-control travel" type="number" placeholder="Travellers"
+												name="departureDate" formControlName="travellers" required> -->
+												<select class="form-control" formControlName="travelClass">
+													<option selected disabled value="">Flight Stops</option>
+													<option value="Non-Stop">Non-Stop</option>
+													<option value="1 Stop">1 Stop</option>
+													<option value="2 Stop">2 Stop</option>
+												</select>
+												<span class="select-arrow"></span>
+										</div>
+										<!-- <div *ngIf="travellers.invalid && (travellers.dirty || travellers.touched)"
+											class="alert alert-danger">
+											<div *ngIf="travellers.errors.required">
+												Number of Passangers required!!
+											</div>
+											<div *ngIf="travellers.errors.min">
+												Number of Passangers should be more than 0!!
+											</div>
+											<div *ngIf="travellers.errors.max">
+												Number of Passangers should be less than 3!!
+											</div>
+										</div> -->
+									</div>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<span class="form-label">Travel class</span>
+											<select class="form-control" formControlName="travelClass">
+												<option selected disabled value="">Travel Class</option>
+												<option>Economy class</option>
+												<option>Business class</option>
+												<option>First class</option>
+											</select>
+											<span class="select-arrow"></span>
+											<!-- <div *ngIf="travelClass.invalid && (travelClass.dirty || travelClass.touched)"
+												class="alert alert-danger">
+												<div *ngIf="travelClass.errors.required">
+													Traveller required!!
+												</div>
+
+											</div> -->
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+							<div class="row d-flex align-items-center justify-content-center">
+
+								<div class="col-md-3">
+									<div class="form-btn">
+										<button class="submit-btn">Show flights</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="my-5 panel" *ngIf="flag">
+					<table class="table table-striped ">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th class="text-center">Name</th>
+								<th class="text-center">Source</th>
+								<th class="text-center">Destination</th>
+								<th>Departure Date</th>
+								<th>Departure Time</th>
+								<th>Stops</th>
+								<th>TotalSeats</th>
+								<th>Base Price</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr *ngFor="let flight of flights">
+								<td>{{flight.flightId}}</td>
+								<td><img src="/assets/icons/airplane.png" height="25px"
+										width="25px">{{flight.flightName}}</td>
+								<td><img src="/assets/icons/place.png" height="25px" width="25px">{{flight.source}}</td>
+								<td><img src="/assets/icons/place.png" height="25px" width="25px">{{flight.destination}}
+								</td>
+								<td><img src="/assets/icons/date.png" height="25px"
+										width="25px">{{flight.departureDate}}</td>
+								<td><img src="/assets/icons/time.png" height="25px"
+										width="25px">{{flight.departureTime}}</td>
+								<td><img src="/assets/icons/stops.png" height="25px" width="25px">{{flight.stops}}</td>
+								<td><img src="/assets/icons/seat.png" height="25px" width="25px">{{flight.totalSeats}}
+								</td>
+								<td><img src="/assets/icons/rupee.png" height="25px" width="25px">{{flight.basePrice}}
+								</td>
+								<td><button type="button" (click)="onBookClick(flight.flightId)" class="btn btn-success">Book</button></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+.container{
+	margin-top: 100px;
+	
+}
+
+.card-left{
+	margin-right: 8%;
+	border-radius: 25px;
+}
+
+.card-header{
+	background-color: #007bf0;
+	border-radius: 25px;
+}
+.card{
+	margin-top: 150px;
+	border-radius: 25px;
+}
+
+.grid-container {
+	display: grid;
+	gap: 0;
+	
+  }
+  
+  .grid-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	padding: 20px;
+	font-size: 30px;
+  }
+  
+  .item1 {
+	grid-column: 1 / span 2;
+	grid-row: 2;
+  }
+  
+  .item2 {
+	grid-column: 3;
+	grid-row: 1 / span 2;
+  }
+
+  button{
+    border-radius: 20px;
+     background-color:#007bff;
+     color: #fff;
+    border: transparent;
+}
+
+.search{
+  border-radius: 20px;
+}
+.search::placeholder{
+  padding-left: 7px;
+}
+
+table {
+    width: 100%;
+}
+
+thead{
+  font-size: 16px;
+}
+tbody{
+  font-size: 15px;
+  font-weight:500;
+}
+ 
+.panel{
+    background: linear-gradient(to right, #f2f2f2, #80bfff);
+    padding: 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.05),0 0 0 10px rgba(0,0,0,0.05);
+}
+
+.title{
+  font-size: 30px;
+  padding-top: 25px;
+  padding-left: 20px;
+  font-weight: 500;
+ color: #007bff; 
+}
+
+

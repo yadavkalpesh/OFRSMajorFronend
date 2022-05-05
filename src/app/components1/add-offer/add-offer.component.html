@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+    <title>Add Flight</title>
+</head>
+
+<body>
+
+    <div class="form-body" style="margin-top:30px;">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3 class="title" style="color: #007bff;">Add Offer</h3>
+
+                        <form [formGroup]="offer" (ngSubmit)="onSubmit()">
+
+                            <div class="col-md-12 my-4">
+                                <label for="offerName" class="form-label mb-0">Offer Name</label>
+                                <input class="form-control mt-2" type="text" formControlName="offerName" name="offerName"
+                                    placeholder="Offer Name" required>
+                                <div *ngIf="offerName.invalid && (offerName.dirty || offerName.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="offerName.errors.required">
+                                        Offer Name required!!
+                                    </div>
+                                    <div *ngIf="offerName.errors.minlength">
+                                        Offer Name should have more than 3 characters!!
+                                    </div>
+                                    <div *ngIf="offerName.errors.maxlength">
+                                        Offer Name should have less than 15 characters!!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 my-3">
+                                <label for="offerCode" class="form-label mb-0">Offer Code</label>
+                                <input class="form-control mt-2" type="text" formControlName="offerCode" name="offerCode"
+                                    placeholder="Offer Code" required>
+                                <div *ngIf="offerCode.invalid && (offerCode.dirty || offerCode.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="offerCode.errors.required">
+                                        Offer Code required!!
+                                    </div>
+                                    <div *ngIf="offerCode.errors.minlength">
+                                        Offer Code should have more than 3 characters!!
+                                    </div>
+                                    <div *ngIf="offerCode.errors.maxlength">
+                                        Offer Code should have less than 15 characters!!
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 my-3">
+                                <label for="offerAmount" class="form-label">Base Price</label>
+                                <input class="form-control " type="number" formControlName="offerAmount" name="offerAmount"
+                                    placeholder="Offer Amount" required>
+                                <div *ngIf="offerAmount.invalid && (offerAmount.dirty || offerAmount.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="offerAmount.errors.required">
+                                        Offer Price required!!
+                                    </div>
+                                    <div *ngIf="offerAmount.errors.min">
+                                        Offer Price should be greater than 5
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-button mt-3">
+                                <button mat-stroked-button id="submit" type="submit" [disabled]="!offer.valid"
+                                    class="btn btn-success">Add Offer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

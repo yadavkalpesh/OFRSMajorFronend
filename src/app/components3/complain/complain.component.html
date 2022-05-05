@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+    <title></title>
+</head>
+
+<body>
+
+    <div class="form-body" style="margin-top: 60px;">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Add Complain</h3>
+
+                        <form (ngSubmit)="onSubmit()" class="requires-validation" novalidate>
+
+
+                            <div class="col-md-12 my-3">
+                                <label style="font-size: 20px;" for="departureDate" class="form-label">Describe</label>
+                                <textarea class="form-control" placeholder="Leave a comment here" id="complainDetails"
+                                    name="complainDetails" style="color: black;"
+                                    [(ngModel)]="complain.complainDetails"></textarea>
+                            </div>
+
+                            <div class="form-button mt-3">
+                                <button id="submit" type="submit" class="btn btn-primary">Add Complain</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

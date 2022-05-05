@@ -1,0 +1,92 @@
+
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card  text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <form [formGroup]="user" (ngSubmit)="addUser()">
+              <div class="mb-md-5 mt-md-4 pb-5">
+                <h2 class="fw-bold mb-2 text-uppercase">Register</h2><br>
+
+                <div class="form-outline form-white mb-4">
+                  <input type="text" id="userName" class="form-control form-control-lg" formControlName="userName" name="userName" placeholder="Name" required />
+                  <label class="form-label" for="userName">Name</label>
+                  <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
+                    <div *ngIf="userName.errors.required">
+                      Name required!!
+                    </div>
+                    <div *ngIf="userName.errors.min">
+                      Name should be greater than 2 characters
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <input type="email" id="userEmail" class="form-control form-control-lg" formControlName="userEmail" name="userEmail" placeholder="Email" required />
+                  <label class="form-label" for="userName">Email</label>
+                  <div *ngIf="userEmail.invalid && (userEmail.dirty || userEmail.touched)" class="alert alert-danger">
+                    <div *ngIf="userEmail.errors.required">
+                      Email required
+                    </div>
+                    <div *ngIf="userEmail.errors.min">
+                      Email should be valid
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <input type="text" id="contactNumber" class="form-control form-control-lg" formControlName="contactNumber" name="contactNumber" placeholder="Phone" required />
+                  <label class="form-label" for="contactNumber">Phone</label>
+                  <div *ngIf="contactNumber.invalid && (contactNumber.dirty || contactNumber.touched)" class="alert alert-danger">
+                    <div *ngIf="contactNumber.errors.required">
+                      Phone required!!
+                    </div>
+                    <div *ngIf="contactNumber.errors.min">
+                      Phone must be of 10 digits
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <input type="password" id="password" class="form-control form-control-lg" formControlName="password" name="password" placeholder="Password" required />
+                  <label class="form-label" for="password">Password</label>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">
+                      Password required!!
+                    </div>
+                    <div *ngIf="password.errors.min">
+                      Password must be greater than 8 characters
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <input type="password" id="confirmPassword" class="form-control form-control-lg" formControlName="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
+                  <label class="form-label" for="confirmPassword">Confirm Password</label>
+                  <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+                    <div *ngIf="confirmPassword.errors.required">
+                      Confirm Password required!!
+                    </div>
+                    <div *ngIf="confirmPassword.errors.min">
+                      Password and Confirm password must be same
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!user.valid">Register</button>
+                </div>
+                <div>
+                  <p class="mb-0">Already registered?<a href="/login" class="text-white-50 fw-bold">Login here</a></p>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+</head>
+<body>
+    <div class="form-body" style="margin-top:30px;">
+        <div class="row" >
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3 class="title" style="color: #007bff;">My Profile</h3>
+
+                        <form>
+
+                            <div class="col-md-12 my-4">
+                                <label for="offerName" class="form-label mb-0"><u>User Name</u></label>
+                                <h3 class="mt-4">{{registerUser.userName}}</h3>
+                               
+                            </div>
+
+                            <div class="col-md-12 my-3">
+                                <label for="offerCode" class="form-label mb-0"><u>User Email</u></label>
+                                <h3 class="mt-4">{{registerUser.userEmail}}</h3>
+                               
+                            </div>
+
+
+                            <div class="col-md-12 my-3">
+                                <label for="offerAmount" class="form-label"><u>Contact Number</u></label>
+                                <h3 class="mt-4">{{registerUser.contactNumber}}</h3>
+                               
+                            </div>
+
+
+
+                            <div class="form-button mt-3">
+                                <button mat-stroked-button id="submit" type="submit" (click)="onClick()"
+                                    class="btn btn-success">Update Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

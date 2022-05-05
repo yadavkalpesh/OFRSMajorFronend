@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+    <title>Update Profile</title>
+</head>
+
+<body>
+
+    <div class="form-body" style="margin-top:30px;">
+        <div class="row" >
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3 class="title" style="color: #007bff;">Update Profile</h3>
+
+                        <form  (ngSubmit)="onSubmit()">
+
+                            <div class="col-md-12 my-4">
+                                <label for="offerName" class="form-label mb-0">User Name</label>
+                                <input class="form-control mt-2" type="text" name="userName"
+                                  [(ngModel)]="registerUser.userName" required>
+                               
+                            </div>
+
+                            <div class="col-md-12 my-3">
+                                <label for="offerCode" class="form-label mb-0">User Email</label>
+                                <input class="form-control mt-2" type="text"  name="userEmail"
+                                  [(ngModel)]="registerUser.userEmail" required>
+                               
+                            </div>
+
+
+                            <div class="col-md-12 my-3">
+                                <label for="offerAmount" class="form-label">Contact Number</label>
+                                <input class="form-control " type="number" name="contactNumber"
+                                  [(ngModel)]="registerUser.contactNumber" required>
+                               
+                            </div>
+
+
+
+                            <div class="form-button mt-3">
+                                <button mat-stroked-button id="submit" type="submit" 
+                                    class="btn btn-success">Update Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

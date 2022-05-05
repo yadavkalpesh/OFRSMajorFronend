@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+    <title>Update Flight</title>
+</head>
+
+<body>
+
+    <div class="form-body" style="margin-top:30px;">
+        <div class="row" >
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3 class="title" style="color: #007bff;">Update Offer</h3>
+
+                        <form  (ngSubmit)="onSubmit()">
+
+                            <div class="col-md-12 my-4">
+                                <label for="offerName" class="form-label mb-0">Offer Name</label>
+                                <input class="form-control mt-2" type="text" name="offerName"
+                                    placeholder="Offer Name"  [(ngModel)]="offer.offerName" required>
+                               
+                            </div>
+
+                            <div class="col-md-12 my-3">
+                                <label for="offerCode" class="form-label mb-0">Offer Code</label>
+                                <input class="form-control mt-2" type="text"  name="offerCode"
+                                    placeholder="Offer Code"  [(ngModel)]="offer.offerCode" required>
+                               
+                            </div>
+
+
+                            <div class="col-md-12 my-3">
+                                <label for="offerAmount" class="form-label">Base Price</label>
+                                <input class="form-control " type="number" name="offerAmount"
+                                    placeholder="Offer Amount"  [(ngModel)]="offer.offerAmount" required>
+                               
+                            </div>
+
+
+
+                            <div class="form-button mt-3">
+                                <button mat-stroked-button id="submit" type="submit" 
+                                    class="btn btn-success">Update Offer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

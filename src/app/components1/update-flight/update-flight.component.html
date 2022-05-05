@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+    <title>Update Flight</title>
+</head>
+
+<body>
+
+    <div class="form-body" style="margin-top: 100px;">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Update Flight</h3>
+
+                        <form (ngSubmit)="onSubmit()" class="requires-validation" novalidate>
+
+                            <div class="col-md-12 my-4 mb-2">
+                                <label for="flightName" class="form-label">Flight Name</label>
+                                <select class="form-select" name="flightName" style="margin:0px;"
+                                    [(ngModel)]="flight.flightName" required>
+                                    <option selected disabled value="">{{flight.flightName}}</option>
+                                    <option value="IndiGo">IndiGo</option>
+                                    <option value="Air India">Air India</option>
+                                    <option value="Go First">Go First</option>
+                                    <option value="AirAsia ">AirAsia</option>
+                                    <option value="SpiceJet">SpiceJet</option>
+                                    <option value="Vistara">Vistara</option>
+                                    <option value="TruJet">TruJet</option>
+                                </select>
+                                <div class="valid-feedback">field is valid!</div>
+                                <div class="invalid-feedback">field cannot be blank!</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="source" class="form-label">Source</label>
+                                <select class="form-select" name="source" [(ngModel)]="flight.source"
+                                    style="margin:0px;" required>
+                                    <option selected disabled value="">{{flight.source}}</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Bengaluru">Bengaluru</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Kochi">Kochi</option>
+                                </select>
+                                <div class="valid-feedback">field is valid!</div>
+                                <div class="invalid-feedback">field cannot be blank!</div>
+                            </div>
+
+                            <div class="col-md-12 my-2">
+                                <label for="destination" class="form-label">Destination</label>
+                                <select class="form-select" name="destination" [(ngModel)]="flight.destination"
+                                    style="margin:0px;" required>
+                                    <option selected disabled value="">{{flight.destination}}</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Bengaluru">Bengaluru</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Kochi">Kochi</option>
+                                </select>
+                                <div class="valid-feedback">field is valid!</div>
+                                <div class="invalid-feedback">field cannot be blank!</div>
+                            </div>
+
+
+
+                            <div class="col-md-12 my-3">
+                                <label for="departureDate" class="form-label">Departure Date</label>
+                                <input class="form-control" type="date" name="departureDate"
+                                    [(ngModel)]="flight.departureDate" required>
+                                <div class="valid-feedback">field is valid!</div>
+                                <div class="invalid-feedback">field cannot be blank!</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="departureTime" class="form-label">Departure Time</label>
+                                <input class="form-control" type="time" name="departureTime"
+                                    [(ngModel)]="flight.departureTime" required>
+                                <div class="valid-feedback">field is valid!</div>
+                                <div class="invalid-feedback">field cannot be blank!</div>
+                            </div>
+
+                            <div class="col-md-12 my-3 ">
+                                <label for="stops" class="form-label">Flight Stops</label>
+                                <select class="form-select mt-0" name="stops" [(ngModel)]="flight.stops" required>
+                                    <option selected disabled value="">Flight Stops</option>
+                                    <option value="Non-Stop">Non-Stop</option>
+                                    <option value="1 Stop">1 Stop</option>
+                                    <option value="2 Stop">2 Stop</option>
+                                </select>
+                                <div class="valid-feedback">field is valid!</div>
+                                <div class="invalid-feedback">field cannot be blank!</div>
+                            </div>
+
+                            <div class="col-md-12 my-3">
+                                <label for="totalSeats" class="form-label">Total Seats</label>
+                                <input class="form-control" type="number" name="totalSeats"
+                                    [(ngModel)]="flight.totalSeats" placeholder="Total Seats" required>
+                                <div class="valid-feedback">field is valid!</div>
+                                <div class="invalid-feedback">field cannot be blank!</div>
+                            </div>
+
+
+                            <div class="col-md-12 my-3">
+                                <label for="basePrice" class="form-label">Base Price</label>
+                                <input class="form-control" type="number" name="basePrice"
+                                    [(ngModel)]="flight.basePrice" placeholder="Base Price" required>
+                                <div class="valid-feedback">field is valid!</div>
+                                <div class="invalid-feedback">field cannot be blank!</div>
+                            </div>
+
+
+
+                            <div class="form-button mt-3">
+                                <button id="submit" type="submit" [routerLink]="['\flights']" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form (ngSubmit)="onSubmit()">
+            <div class="row upperRow">
+
+                <div class="col-md-7 card ticketdiv">
+                    <h1 class="pt-4" id="temp">Flight Details</h1>
+                    <section class="date">
+                        <time>
+                            <span>{{flight.source}}</span>
+                            <img src="/assets/icons/airplane.png">
+                            <span class="mt-2">{{flight.destination}}</span>
+                        </time>
+                    </section>
+                    <section class="card-cont">
+                        <small style="font-size: 18px;">#{{flight.flightId}}</small>
+                        <h2>{{flight.flightName}}</h2>
+                        <div class="even-date">
+                            <i class="fa fa-calendar"></i>
+                            <time style="font-size: 15px;">
+                                <span>{{flight.departureDate | date:'fullDate'}}</span>
+                                <span>{{flight.departureTime}}</span>
+                            </time>
+                        </div>
+                        <div class="even-info">
+                            <i class="fa fa-map-marker"></i>
+                            <p>
+                                25 Kgs Check-In, 8 Kgs Cabin
+                            </p>
+                        </div>
+
+                    </section>
+                </div>
+
+                <div class="col-md-4 mx-5  pricediv">
+                    <h1 class="pt-2">Fare Summary</h1>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col px-5">
+                            <h2>Base Fare</h2>
+                            <h2>Offer Discount</h2>
+                        </div>
+                        <div class="col">
+                            <h2>{{flight.basePrice | currency:'INR'}}</h2>
+                            <h2 style="padding-right: 15px;">-&nbsp;{{offerNew.offerAmount | currency:'INR'}}</h2>
+                            
+                            <h2>{{flight.basePrice - offerNew.offerAmount | currency:'INR'}}</h2>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col px-5">
+                            <h2>Total Fare</h2>
+                        </div>
+                        <div class="col">
+                            <h2>{{(flight.basePrice - offerNew.offerAmount)*(bookTicket.totalPassenger) | currency:'INR'}}</h2>
+                        </div>
+                    </div>
+
+                    
+
+
+                    <div class="row  d-flex align-items-center justify-content-center">
+
+                        <div class="col-5 pb-3">
+                            <div class="form-btn">
+                                <button type="submit" class="btn btn-success">Make Payment</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row mt-3 lowerRow">
+                <div class="col-md-7 passangerDiv">
+                    <h1 class="pt-4">Traveller Details</h1>
+
+                    <div class="row">
+                        <div class="col-6 px-3">
+                            <h2>Total Passengers</h2>
+                        </div>
+                        <div class="col-5">
+                            <input class="form-control" type="text" name="totalPassenger" placeholder="Total passenger"
+                                [(ngModel)]="bookTicket.totalPassenger" required>
+                        </div>
+                    </div><br>
+
+                    
+                    <div class="row travellerDiv my-3" id="passangerForm" *ngFor="let obj of dataarray; let i=index">
+                        
+                        <div class="col-4 mx-2">
+                            <label for="offerAmount" class="form-label">Name</label>
+                            <input class="form-control" type="text" name="passengerName{{i}}" placeholder="Name"
+                                [(ngModel)]="passenger.passengerName" required>
+                        </div>
+                      
+                        <div class="col-2">
+                            <span class="form-label">Gender</span>
+                            <select class="form-control mt-2" name="gender{{i}}" 
+                                [(ngModel)]="passenger.gender">
+                                <option selected disabled value="">Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                               
+                            </select>
+                            <span class="select-arrow"></span>
+                        </div>
+                        <div class="col-3">
+                            <label for="offerAmount" class="form-label">Contact Number</label>
+                            <input class="form-control " type="number" name="contactNumber{{i}}"
+                                placeholder="Contact Number" 
+                                [(ngModel)]="passenger.contactNumber" required>
+                        </div>
+                        
+                        <div class="col-1">
+                            <span class="btn btn-success" style="margin-top: 32px;"
+                                (click)="savePassenger()">Save</span>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <h2 class="mx-2">Name: <span style="color:green;">{{passenger.passengerName}}</span></h2>
+                        <h2 class="mx-2">Gender: <span style="color:green;">{{passenger.gender}}</span></h2>
+                        <h2 class="mx-2">Contact Number: <span style="color:green;">{{passenger.contactNumber}}</span></h2>
+                        </div>
+                       
+                    </div>
+                   
+                </div>
+                    
+
+
+                <div class="col-4 mx-5 offerdiv">
+                    <div class="row offerdivRow" *ngFor="let offer of offer">
+                        <div class="form-check row">
+                            <div class="col-2">
+                                <input class="form-check-input" (click)="getOfferById(offer.offerId)" value={{offer.offerId}} [(ngModel)]="offerId"  type="radio" name="offerId"
+                                    id="flexRadioDefault1">
+                            </div>
+                            <div class="col-9">
+                                <img src="/assets/icons/discount.png" height="35px" width="35px">
+                                <!-- <p class="mx-2"></p> -->
+                                <label class="form-check-label mx-2" >
+                                    <b>{{offer.offerName}}</b>
+                                </label><br>
+                                <label class="form-check-label mx-4" >
+                                    OfferCode: {{offer.offerCode}}
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </form>
+
+
+    </div>
+
+</body>
+
+</html>
